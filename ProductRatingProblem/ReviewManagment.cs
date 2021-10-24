@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Data;
 
 namespace ProductRatingProblem
 {
@@ -107,6 +108,16 @@ namespace ProductRatingProblem
                                     select list).Skip(5);
 
             foreach (var list in Skip5records)//to print 
+            {
+                Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
+            }
+        }
+        public void PrintReviewsOfLikesAreTrue()
+        {
+            var LikesTrue =  from list in reviewsList
+                                    where list.isLike == true
+                                    select list ;
+            foreach (var list in LikesTrue)//to print  
             {
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
