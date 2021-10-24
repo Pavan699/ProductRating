@@ -79,7 +79,8 @@ namespace ProductRatingProblem
         /// Method to give the Count of revies given for the Product
         /// </summary>
         public void Count()
-        {          
+        {
+            Console.WriteLine("Count for the Product Reviews");
             var CountData = reviewsList.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Count = x.Count() });
 
             foreach (var list in CountData)
@@ -92,6 +93,7 @@ namespace ProductRatingProblem
         /// </summary>
         public void PrintProductIDandReviews()
         {
+            Console.WriteLine("Printing ProductID anf Reviews Only");
             var PriductIDReviews = (from list in reviewsList
                                 select new { list.ProductId, list.Review });
             foreach (var list in PriductIDReviews)
@@ -104,6 +106,7 @@ namespace ProductRatingProblem
         /// </summary>
         public void PrintRecordsExcpetTop5()
         {
+            Console.WriteLine("Print Reviews By Skipping Top 5 reviews");
             var Skip5records = (from list in reviewsList
                                     select list).Skip(5);
 
@@ -112,12 +115,30 @@ namespace ProductRatingProblem
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
         }
+        /// <summary>
+        /// Method to print the Reviews with true likes
+        /// </summary>
         public void PrintReviewsOfLikesAreTrue()
         {
+            Console.WriteLine("Print Reviews having True Likes");
             var LikesTrue =  from list in reviewsList
                                     where list.isLike == true
                                     select list ;
             foreach (var list in LikesTrue)//to print  
+            {
+                Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
+            }
+        }
+        /// <summary>
+        /// Method to print the Reviews with nice feedback
+        /// </summary>
+        public void PrintReviewsWithNice()
+        {
+            Console.WriteLine("Reviews with -Nice- feedback");
+            var NiceReview = from list in reviewsList
+                            where list.Review == "Nice"
+                             select list;
+            foreach (var list in NiceReview)//to print  
             {
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
