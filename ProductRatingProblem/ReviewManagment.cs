@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ProductRatingProblem
 {
+    /// <summary>
+    /// Class to manage the review process
+    /// </summary>
     class ReviewManagment
     {
+        /// <summary>
+        /// List of 25 users with there reviews
+        /// </summary>
         List<Reviews> reviewsList = new List<Reviews>()
             {
                 new Reviews(){ProductId=1,UserId=1,Rating=5,Review="Good",isLike=true },
@@ -34,11 +41,27 @@ namespace ProductRatingProblem
                 new Reviews(){ProductId=24,UserId=7,Rating=4,Review="Good",isLike=true },
                 new Reviews(){ProductId=25,UserId=1,Rating=4,Review="Avg",isLike=true },
             };
+        /// <summary>
+        /// Print metghod to print all the reviews
+        /// </summary>
         public void PrintReviews()
         {
             foreach (var list in reviewsList)//to print list 
             {
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating +" Review : " + list.Review + " isLike : " + list.isLike);
+            }
+        }
+        /// <summary>
+        /// Method to get the top 3 reviews
+        /// </summary>
+        public void TopReviews()
+        {
+            var recordedData = (from userReview in reviewsList
+                                orderby userReview.Rating descending//using orderby - decending to get the higher to lower ratings
+                                select userReview).Take(3);//take(3) will take top 3 user with high ratings
+            foreach (var list in recordedData)//to print list 
+            {
+                Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
         }
     }
