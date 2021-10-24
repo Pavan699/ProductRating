@@ -60,7 +60,7 @@ namespace ProductRatingProblem
             var top3reviews = (from userReview in reviewsList
                                 orderby userReview.Rating descending//using orderby - decending to get the higher to lower ratings
                                 select userReview).Take(3);//take(3) will take top 3 user with high ratings
-            foreach (var list in top3reviews)//to print list 
+            foreach (var list in top3reviews)//to print 
             {
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
@@ -69,7 +69,7 @@ namespace ProductRatingProblem
             var ProductIDReviews = from userReview in reviewsList
                                    where (userReview.ProductId == 1 || userReview.ProductId == 4 || userReview.ProductId == 9) && (userReview.Rating > 3)
                                select userReview;//ids are 1,4,9 and rating is grater than 3
-            foreach (var list in ProductIDReviews)//to print list 
+            foreach (var list in ProductIDReviews)//to print  
             {
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
@@ -96,6 +96,19 @@ namespace ProductRatingProblem
             foreach (var list in PriductIDReviews)
             {
                 Console.WriteLine(list.ToString());
+            }
+        }
+        /// <summary>
+        /// To print the records Except top 5
+        /// </summary>
+        public void PrintRecordsExcpetTop5()
+        {
+            var Skip5records = (from list in reviewsList
+                                    select list).Skip(5);
+
+            foreach (var list in Skip5records)//to print 
+            {
+                Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
         }
     }

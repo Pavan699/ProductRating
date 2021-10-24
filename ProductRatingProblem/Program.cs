@@ -11,7 +11,8 @@ namespace ProductRatingProblem
             //reviewManagment.PrintReviews();
             //reviewManagment.ProductReviews();
             //reviewManagment.Count();
-            reviewManagment.PrintProductIDandReviews();
+            //reviewManagment.PrintProductIDandReviews();
+            reviewManagment.PrintRecordsExcpetTop5();
         }
     }
 }
