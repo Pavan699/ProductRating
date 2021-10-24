@@ -10,7 +10,8 @@ namespace ProductRatingProblem
             ReviewManagment reviewManagment = new ReviewManagment();
             //reviewManagment.PrintReviews();
             //reviewManagment.ProductReviews();
-            reviewManagment.Count();
+            //reviewManagment.Count();
+            reviewManagment.PrintProductIDandReviews();
         }
     }
 }

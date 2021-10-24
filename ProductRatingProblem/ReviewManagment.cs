@@ -86,5 +86,17 @@ namespace ProductRatingProblem
                 Console.WriteLine("ProductID : "+list.ProductId + " == " + list.Count +" times");
             }
         }
+        /// <summary>
+        /// Method to Print ProductID and Reviews
+        /// </summary>
+        public void PrintProductIDandReviews()
+        {
+            var PriductIDReviews = (from list in reviewsList
+                                select new { list.ProductId, list.Review });
+            foreach (var list in PriductIDReviews)
+            {
+                Console.WriteLine(list.ToString());
+            }
+        }
     }
 }
