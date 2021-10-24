@@ -9,7 +9,7 @@ namespace ProductRatingProblem
             Console.WriteLine("Welcome To Product Rating");
             ReviewManagment reviewManagment = new ReviewManagment();
             //reviewManagment.PrintReviews();
-            reviewManagment.TopReviews();
+            reviewManagment.ProductReviews();
         }
     }
 }
