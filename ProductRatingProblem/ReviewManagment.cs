@@ -74,5 +74,17 @@ namespace ProductRatingProblem
                 Console.WriteLine("ProductId : " + list.ProductId + " UserId : " + list.UserId + " Rating : " + list.Rating + " Review : " + list.Review + " isLike : " + list.isLike);
             }
         }
+        /// <summary>
+        /// Method to give the Count of revies given for the Product
+        /// </summary>
+        public void Count()
+        {          
+            var CountData = reviewsList.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Count = x.Count() });
+
+            foreach (var list in CountData)
+            {
+                Console.WriteLine("ProductID : "+list.ProductId + " == " + list.Count +" times");
+            }
+        }
     }
 }
